@@ -48,5 +48,9 @@ public class Application implements CommandLineRunner {
 		// Retrieval and display of the 3 Products in the Console
 		List<Product> productList = productRepository.findAll();
 		productList.forEach(product -> System.out.println(product));
+
+		// Retrieving and displaying a Product using its “Id” in the Console
+		Product foundProduct = productRepository.findById(3L).get();
+		System.out.println(foundProduct);
 	}
 }
