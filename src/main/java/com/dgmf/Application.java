@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
@@ -39,8 +40,13 @@ public class Application implements CommandLineRunner {
 				.quantity(32)
 				.build();
 
+		// Additions of 3 Products in the DB
 		List<Product> products = productRepository.saveAll(
 				Arrays.asList(product1, product2, product3)
 		);
+
+		// Retrieval and display of the 3 Products in the Console
+		List<Product> productList = productRepository.findAll();
+		productList.forEach(product -> System.out.println(product));
 	}
 }
